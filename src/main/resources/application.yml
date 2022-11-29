@@ -1,0 +1,33 @@
+server:
+  port: 8081
+spring:  mvc:    view:
+      prefix: /WEB-INF/jsp/      suffix: .jsp    application:    name: bootactuator  datasource:    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/vogodb
+    username: root
+    password: root
+  jpa:    generate-ddl: true
+    show-sql: true  
+management:  endpoints:    web:      exposure:        include:        - "*"      discovery:        enabled: true      base-path: /management
+  endpoint:    shutdown:      enabled: true               
+    sessions:      enabled: true
+    httptrace:      enabled: true                 configprops:      cache:        time-to-live: 20s    health:      show-components: always
+      show-details: always      group:        bootactuator:
+          include:          - db
+          - diskSpace
+          - razorPay  server:    port: 8088  health:    db:      enabled: true
+    diskspace:      enabled: true      
+#info:
+  #author: sriman
+  #version: 1.0
+  #released: 10-10-2021
+  #features: actuator
+
+razorpay:
+  url: http://www.googles.com  
+  
+  
+  
+  
+  
+  
+  
